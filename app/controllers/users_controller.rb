@@ -7,7 +7,7 @@ end
 post '/users' do 
     user = User.create(params)
     session[:user_id] = user.id
-    #adding user id to the session hash 
+    #adding user id key to the session hash 
     #this allows us to check which user is logged in
     #when the user logs out, clear the entire session hash
     redirect to "/profile/#{user.id}"
