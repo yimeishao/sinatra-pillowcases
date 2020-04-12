@@ -1,18 +1,10 @@
 class UsersController < ApplicationController 
 
     get '/signup' do
-        if Helpers.is_logged_in?(session)
-            user = Helpers.current_user(session)
-            redirect to "/profile/#{user.id}"
-        end
         erb :"users/signup"
     end 
 
     get '/login' do 
-        if Helpers.is_logged_in?(session)
-            user = Helpers.current_user(session)
-            redirect to "/profile/#{user.id}"
-        end 
         erb :"users/login"
     end 
 
@@ -21,7 +13,7 @@ class UsersController < ApplicationController
         if @user && @user.authenticate(params[:password])
             #authenticate method comes from bcrypt
             session[:user_id] = @user.id
-            redirect to "/profile/#{user.id}"
+            redirect to "/profile/#{@user.id}"
         else 
             redirect to '/login'
             #add error message later
@@ -40,11 +32,12 @@ class UsersController < ApplicationController
         else 
             redirect to '/signup'
             #change this to error message later
+        end
     end 
 
     get '/profile/:id' do 
         #make sure only self can view own profile
-        if User.find_by(id: params[:id])
+        if Helpers.is_logged_in?(session) && User.find_by(id: params[:id])
         @user = User.find_by(id: params[:id])
         else 
             redirect to "/"
