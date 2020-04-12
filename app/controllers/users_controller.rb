@@ -1,6 +1,10 @@
 class UsersController < ApplicationController 
 
     get '/signup' do
+        if Helpers.is_logged_in?(session)
+            user = Helpers.current_user(session)
+            redirect to "/profile/#{user.id}"
+        end
         erb :"users/signup"
     end 
 
@@ -17,6 +21,7 @@ class UsersController < ApplicationController
         else 
             redirect to '/login'
             #add error message later
+            #maybe redirect to welcome page?
         end 
     end 
 
