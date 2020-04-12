@@ -9,6 +9,8 @@ I'm going to build an app where users can create entries that contain informatio
 - see all of their own entries 
 - edit their entries 
 - delete their entries 
+## Users will not be able to... 
+- view, edit, or delete other users' entries 
 
 # Wireframing 
 ## Models 
