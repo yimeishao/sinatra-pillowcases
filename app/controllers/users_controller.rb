@@ -9,6 +9,10 @@ class UsersController < ApplicationController
     end 
 
     get '/login' do 
+        if Helpers.is_logged_in?(session)
+            user = Helpers.current_user(session)
+            redirect to "/profile/#{user.id}"
+        end 
         erb :"users/login"
     end 
 
@@ -39,12 +43,18 @@ class UsersController < ApplicationController
     end 
 
     get '/profile/:id' do 
+        #make sure only self can view own profile
         if User.find_by(id: params[:id])
         @user = User.find_by(id: params[:id])
         else 
             redirect to "/"
         end 
         erb :"users/profile"
+    end 
+
+    get '/logout' do 
+        session.clear
+        redirect to "/"
     end 
 
 end 
