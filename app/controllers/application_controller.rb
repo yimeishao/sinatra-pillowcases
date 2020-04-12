@@ -11,8 +11,8 @@ class ApplicationController < Sinatra::Base
     #otherwise the session would automatically clear with each new request
   end
 
-  get "/" do
-    erb :welcome
+  get "/" do 
+      erb :welcome
   end
 
 end

@@ -1,2 +1,8 @@
 <h1>Hi, <%=@user.name%>.</h1> 
 
+<h3>Here are your entries:</h3> 
+<ul>
+<% @entries.each do |entry| %> 
+    <li><%=entry.date%>: <a href="/entry/<%=entry.id%>"><%=entry.name%></a></li>
+    <% end %> 
+</ul>

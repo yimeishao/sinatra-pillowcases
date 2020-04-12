@@ -39,6 +39,7 @@ class UsersController < ApplicationController
         #make sure only self can view own profile
         if Helpers.is_logged_in?(session) && User.find_by(id: params[:id])
         @user = User.find_by(id: params[:id])
+        @entries = @user.entries
         else 
             redirect to "/"
         end 
