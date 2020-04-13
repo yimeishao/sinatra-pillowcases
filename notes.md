@@ -1,6 +1,6 @@
 # App Overview 
 
-An app where users can create entries that contain information about their recent sexual partners.
+An app where users can create private entries that contain information about their recent sexual partners.
 
 # User Stories 
 ## Users will be able to... 
