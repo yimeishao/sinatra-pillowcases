@@ -37,8 +37,8 @@ class UsersController < ApplicationController
 
     get '/profile/:id' do 
         #make sure only self can view own profile
-        if Helpers.is_logged_in?(session) && User.find_by(id: params[:id])
         @user = User.find_by(id: params[:id])
+        if Helpers.is_logged_in?(session) && User.find_by(id: params[:id]) == @user.id
         @entries = @user.entries
         else 
             redirect to "/"

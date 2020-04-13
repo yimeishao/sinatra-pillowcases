@@ -36,3 +36,4 @@ An app where users can create private entries that contain information about the
 # Stretch Goals 
 - CSS 
 - Include a Partners model (users have many partners through which they have many entries) 
+- Users can create custom fields
