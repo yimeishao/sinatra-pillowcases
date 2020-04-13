@@ -1,0 +1,10 @@
+<h1><%=@entry.name%></h1> 
+<p>
+<%=@entry.date%><br>
+<%=@entry.sign%><br>
+<%=@entry.notes%><br>
+</p> 
+<br> 
+<a href="/entries/<%=@entry.id if Helpers.current_user(session) == @entry.user%>/edit">Edit</a> 
+| 
+<a href="/entries/<%=@entry.id if Helpers.current_user(session) == @entry.user%>/delete">Delete</a> 

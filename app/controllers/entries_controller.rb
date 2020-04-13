@@ -14,4 +14,36 @@ class EntriesController < ApplicationController
         entry.save
         redirect to "/profile/#{user.id}"
     end 
+
+    get '/entries/:id' do 
+        if !Helpers.is_logged_in?(session)
+            redirect '/'
+        end 
+        @entry = Entry.find_by(id: params[:id])
+        if !@entry
+            redirect to '/'
+        end 
+        erb :"entries/show"
+    end 
+
+    get '/entries/:id/edit' do 
+        @entry = Entry.find_by(id: params[:id])
+        if !Helpers.is_logged_in?(session) || !@entry || @entry.user !=Helpers.current_user(session)
+            redirect to "/"
+        end 
+        erb :"entries/edit"
+    end 
+
+    patch '/entries/:id' do 
+        entry = Entry.find_by(id: params[:id])
+        if entry && entry.user == Helpers.current_user(session)
+            entry.update(params[:entry])
+            redirect to "/entries/#{entry.id}"
+        else 
+            redirect to "/"
+        end 
+        erb :"entries/show"
+    end 
+
+
 end 

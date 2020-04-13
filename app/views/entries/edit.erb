@@ -1,0 +1,14 @@
+<h1>Edit <%=@entry.name%></h1> 
+<form action="/entries/<%=@entry.id%>" method="post">
+<input type="hidden" name="_method" value="patch">
+<label>Name: </label>
+<input type="text" name="entry[name]" value="<%=@entry.name%>"><br>
+<label>Date: </label>
+<input type="text" name="entry[date]" value="<%=@entry.date%>"><br>
+<label>Sign: </label>
+<input type="text" name="entry[sign]" value="<%=@entry.sign%>"><br>
+<label>Notes: </label>
+<input type="text" name="entry[notes]" value="<%=@entry.notes%>"><br>
+
+<input type="submit" value="Edit Entry">
+</form>
