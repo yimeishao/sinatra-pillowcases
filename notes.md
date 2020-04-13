@@ -1,6 +1,6 @@
 # App Overview 
 
-I'm going to build an app where users can create entries that contain information about their recent sexual activity.
+An app where users can create entries that contain information about their recent sexual partners.
 
 # User Stories 
 ## Users will be able to... 
@@ -10,7 +10,7 @@ I'm going to build an app where users can create entries that contain informatio
 - edit their entries 
 - delete their entries 
 ## Users will not be able to... 
-- view, edit, or delete other users' entries 
+- view, edit, or delete other users' entries or other profiles 
 
 # Wireframing 
 ## Models 
@@ -32,3 +32,7 @@ I'm going to build an app where users can create entries that contain informatio
 - user_id (foreign key)
 ### Associations 
 - entry belongs_to user 
+
+# Stretch Goals 
+- CSS 
+- Include a Partners model (users have many partners through which they have many entries) 

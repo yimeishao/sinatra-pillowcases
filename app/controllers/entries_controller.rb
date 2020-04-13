@@ -45,5 +45,13 @@ class EntriesController < ApplicationController
         erb :"entries/show"
     end 
 
+    delete '/entries/:id/delete' do 
+        entry = Entry.find_by(id: params[:id])
+    if entry && entry.user == Helpers.current_user(session)
+      entry.destroy
+    end
+    redirect to "/profile/#{entry.user.id}"
+  end
+
 
 end 

@@ -6,5 +6,9 @@
 </p> 
 <br> 
 <a href="/entries/<%=@entry.id if Helpers.current_user(session) == @entry.user%>/edit">Edit</a> 
-| 
-<a href="/entries/<%=@entry.id if Helpers.current_user(session) == @entry.user%>/delete">Delete</a> 
+<% if Helpers.current_user(session) == @entry.user %>
+<form action="/entries/<%=@entry.id%>/delete" method="post">
+<input type="hidden" name="_method" value="delete">
+<input type="submit" value="Delete">
+</form>
+<%end%>
