@@ -18,7 +18,7 @@ class EntriesController < ApplicationController
     get '/entries/:id' do 
         @entry = Entry.find_by(id: params[:id])
         if !Helpers.is_logged_in?(session) || !@entry || @entry.user !=Helpers.current_user(session)
-            redirect '/'
+            redirect to '/'
         end 
         erb :"entries/show"
     end 
